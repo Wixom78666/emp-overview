@@ -4,6 +4,8 @@ const Manager = require("./emp-util/manager");
 const Engineer = require("./emp-util/engineer");
 const Intern = require("./emp-util/intern");
 
+const fullTeam = []
+
 const createManager = () => {
     inquirer.prompt([{
         type: "input",
@@ -27,9 +29,34 @@ const createManager = () => {
     }
 ])
 .then(managerInput => {
-    const {
-        name, id, email, officeNumber
+    const { name, id, email, officeNumber
     } = managerInput;
     const manager = new Manager(name, id, email, officeNumber);
+
+    fullTeam.push(manager);
 })
+}
+
+const createEngineer = () => {
+    inquirer.prompt([{
+        type: "input",
+        name: "engName",
+        message: "Enter Engineer Name"
+      }, 
+      {
+        type: "input",
+        name: "engId",
+        message: "Enter Employee ID"
+      }, 
+      {
+        type: "input",
+        name: "engEmail",
+        message: "Enter Engineer Email"
+      },
+      {
+        type: "input",
+        name: "engGithub",
+        message: "Enter Engineer Git Hub"
+      }
+    ])
 }
